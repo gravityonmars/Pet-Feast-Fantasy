@@ -7,32 +7,43 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>PET FEAST FANTACY</h1>
-        <div class="section">
-            <h2>Choose Your Pet</h2>
-            <select id="petSelect">
-                <option value="" disabled selected>Select a Pet</option>
-                <option value="Unicorn">Unicorn</option>
-                <option value="Mini Dragon">Mini Dragon</option>
-                <option value="Alien Blob">Alien Blob</option>
-            </select>
+    <div id="app-contaner">
+        <div id="lobby-screen">
+            <h1>Who is hungry today?</h1>
+            <div class="pet-grid">
+                <div class="pet-option" onclick="selectPet('Unicorn', 'https://placehold.co/150x150/ff99cc/ffffff?text=Unicorn')">
+                    <img src="https://placehold.co/150x150/ff99cc/ffffff?text=Unicorn" alt="Unicorn">
+                    <h3>Unicorn</h3>
+                </div>
+                <div class="pet-option" onclick="selectPet('Mini Dragon', 'https://placehold.co/150x150/99ff99/000000?text=Dragon')">
+                    <img src="https://placehold.co/150x150/99ff99/000000?text=Dragon" alt="Mini Dragon">
+                    <h3>Mini Dragon</h3>
+                </div>
+                <div class="pet-option" onclick="selectPet('Alien Blob', 'https://placehold.co/150x150/cc99ff/ffffff?text=Blob')">
+                    <img src="https://placehold.co/150x150/cc99ff/ffffff?text=Blob" alt="Alien Blob">
+                    <h3>Alien Blob</h3>
+                </div>
+            </div>
         </div>
-        <div class="section">
-            <h2>Choose a Meal</h2>
-            <select id="mealSelect">
-                <option value="" disabled selected>Select a Meal</option>
-                <option value="Star Dust Pancakes">Star Dust Pancakes</option>
-                <option value="Meteor Meatballs">Meteor Meatballs</option>
-                <option value="Invisible Ice Cream">Invisible Ice Cream</option>
-            </select>
-        </div>
-
-        <button id="serveBtn">Serve Meal</button>
-
-        <div class="section">
-            <h2>Pet Reaction</h2>
-            <p id="reaction"></p>
+        <div id="restaurant-screen">
+            <div class="restraunt-building">
+                <div class="ordering-menu">
+                    <h2>Menu</h2>
+                    <div class="menu-item">
+                        <select id="mealSelect">
+                            <option value="Star Dust"> Star Dust Pancakes</option>
+                            <option value="Meteor"> Meteor Meatballs</option>
+                            <option value="Invisible Ice Cream"> Invisible Ice Cream</option>
+                        </select>
+                    </div>
+                    <button onclick="serverOrder">SERVE!</button>
+                </div>
+                <div class="service-window">
+                    <div id="reaction-bubble">Reaction goes here...</div>
+                    <img id="window-pet-img" src="" alt="Pet awaiting food">
+                    <div class="counter-shelf"></div>
+                </div>
+            </div>
         </div>
     </div>
 

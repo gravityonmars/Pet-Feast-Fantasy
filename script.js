@@ -1,37 +1,51 @@
-let currentPetName = "";
+const lobby = document.getElementById("lobby");
+const scene = document.getElementById("restaurant-scene");
+const petImg = document.getElementById("pet-img");
+const petBubble = document.getElementById("pet-bubble");
+const staffBubble = document.getElementById("staff-bubble");
+const mealSelect = document.getElementById("meal-select");
+const serveBtn = document.getElementById("serve-btn");
 
-    const reactions = {
-        "Unicorn": "It burps glitter!",
-        "Mini Dragon": "Small smoke puff!",
-        "Alien Blob": "It jiggles menacingly."
-    };
+let currentPet = "";
 
+const staffLines = [
+    "Great choice!",
+    "That's our specialty!",
+    "Coming right up!",
+    "The chef is on it!"
+]
 
-    function selectPet(name, imageUrl){
-        currentPetName = name;
-        
-        const windowImg = document.getElementById('window-pet-img');
-        windowImg.src = imageUrl;
-        
-        document.getElementById('lobby-screen').style.opacity = '0';
+const reactions = {
+    "Unicorn": "Delicously magical!",
+    "Dragon": "Spicy and hot!",
+    "Blob": "Gloop... Yumm!"
+}
+
+function initRestaurant(name,path){
+    currentPet = name;
+    petImg.src = path;
+    lobby.style.display = 'none';
+    scene.style.display = 'block';
+
+    setTimeout(() => {
+        staffBubble.innerText = "Welcome! What Can I get you?";
+        staffBubble.style.opacity = '1';
+    }, 500);
+}
+
+serveBtn.addEventListener("click", () => {
+    const meal = mealSelect.value;
+    staffBubble.innerText = staffLines[Math.floor(Math.random() * staffLines.length)];
+
+    setTimeout(() => {
+        petImg.classList.add('dance');
+        petBubble.innerText = reactions[currentPet];
+        petBubble.style.opacity = '1';
+
         setTimeout(() => {
-            document.getElementById('lobby-screen').style.display = 'none';
-            document.getElementById('restaurant-screen').style.display = 'flex';
-        }, 500);
-    }
-
-    function serveOrder(){
-        const meal = document.getElementById("mealSelect").value;
-        const petImg = document.getElementById("window-pet-img");
-        const bubble = document.getElementById("reaction-bubble");
-
-        petImg.classList.add("eating");
-
-        bubble.innerText = reactions[currentPetName];
-        bubble.style.opacity = '1';
-
-        setTimeout(() => {
-            petImg.classList.remove("eating");
-            bubble.style.opacity = '0';
-        }, 2000);
-    }
+            petImg.classList.remove('dance');
+            petBubble.style.opacity = '0';
+            staffBubble.innerText = "Anything else?";
+        }, 3000);
+    }, 1000);
+});

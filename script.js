@@ -1,34 +1,37 @@
-const serveBtn = document.getElementById("serveBtn");
-const petSelect = document.getElementById("petSelect");
-const mealSelect = document.getElementById("mealSelect");
-const reaction = document.getElementById("reaction");
+let currentPetName = "";
 
-const reactions = {
-    "Unicorn": {
-        "Star Dust Pancakes": "The unicorn is happy!",
-        "Meteor Meatballs": "The unicorn loves it!",
-        "Invisible Ice Cream": "The unicorn giggles!"
-    },
-    "Mini Dragon": {
-        "Star Dust Pancakes": "The dragon smiles!",
-        "Meteor Meatballs": "The dragon dances!",
-        "Invisible Ice Cream": "The dragon puffs smoke!"
-    },
-    "Alien Blob": {
-        "Star Dust Pancakes": "The blob wiggles!",
-        "Meteor Meatballs": "The blob glows!",
-        "Invisible Ice Cream": "The blob disappears!"
-    }
-};
+    const reactions = {
+        "Unicorn": "It burps glitter!",
+        "Mini Dragon": "Small smoke puff!",
+        "Alien Blob": "It jiggles menacingly."
+    };
 
-serveBtn.addEventListener("click", () => {
-    const pet = petSelect.value;
-    const meal = mealSelect.value;
 
-    if (!pet || !meal) {
-        reaction.textContent = "Please select both a pet and a meal!";
-        return;
+    function selectPet(name, imageUrl){
+        currentPetName = name;
+        
+        const windowImg = document.getElementById('window-pet-img');
+        windowImg.src = imageUrl;
+        
+        document.getElementById('lobby-screen').style.opacity = '0';
+        setTimeout(() => {
+            document.getElementById('lobby-screen').style.display = 'none';
+            document.getElementById('restaurant-screen').style.display = 'flex';
+        }, 500);
     }
 
-    reaction.textContent = reactions[pet][meal];
-});
+    function serveOrder(){
+        const meal = document.getElementById("mealSelect").value;
+        const petImg = document.getElementById("window-pet-img");
+        const bubble = document.getElementById("reaction-bubble");
+
+        petImg.classList.add("eating");
+
+        bubble.innerText = reactions[currentPetName];
+        bubble.style.opacity = '1';
+
+        setTimeout(() => {
+            petImg.classList.remove("eating");
+            bubble.style.opacity = '0';
+        }, 2000);
+    }

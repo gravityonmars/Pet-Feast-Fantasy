@@ -7,46 +7,48 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app-contaner">
-        <div id="lobby-screen">
-            <h1>Who is hungry today?</h1>
-            <div class="pet-grid">
-                <div class="pet-option" onclick="selectPet('Unicorn', 'https://placehold.co/150x150/ff99cc/ffffff?text=Unicorn')">
-                    <img src="https://placehold.co/150x150/ff99cc/ffffff?text=Unicorn" alt="Unicorn">
-                    <h3>Unicorn</h3>
-                </div>
-                <div class="pet-option" onclick="selectPet('Mini Dragon', 'https://placehold.co/150x150/99ff99/000000?text=Dragon')">
-                    <img src="https://placehold.co/150x150/99ff99/000000?text=Dragon" alt="Mini Dragon">
-                    <h3>Mini Dragon</h3>
-                </div>
-                <div class="pet-option" onclick="selectPet('Alien Blob', 'https://placehold.co/150x150/cc99ff/ffffff?text=Blob')">
-                    <img src="https://placehold.co/150x150/cc99ff/ffffff?text=Blob" alt="Alien Blob">
-                    <h3>Alien Blob</h3>
-                </div>
+    <div id="app-container">
+    <div id="lobby-screen">
+        <h1>Who is hungry today?</h1>
+        <div class="pet-grid">
+            <div class="pet-option" onclick="selectPet('Unicorn', 'https://placehold.co/150x150/ff99cc/ffffff?text=Unicorn')">
+                <img src="https://placehold.co/100x100/ff99cc/ffffff?text=🦄" alt="Unicorn">
+                <h3>Unicorn</h3>
+            </div>
+            <div class="pet-option" onclick="selectPet('Mini Dragon', 'https://placehold.co/150x150/99ff99/000000?text=Dragon')">
+                <img src="https://placehold.co/100x100/99ff99/000000?text=🐲" alt="Dragon">
+                <h3>Mini Dragon</h3>
+            </div>
+            <div class="pet-option" onclick="selectPet('Alien Blob', 'https://placehold.co/150x150/cc99ff/ffffff?text=Blob')">
+                <img src="https://placehold.co/100x100/cc99ff/ffffff?text=🦠" alt="Blob">
+                <h3>Alien Blob</h3>
             </div>
         </div>
-        <div id="restaurant-screen">
-            <div class="restraunt-building">
-                <div class="ordering-menu">
-                    <h2>Menu</h2>
-                    <div class="menu-item">
-                        <select id="mealSelect">
-                            <option value="Star Dust"> Star Dust Pancakes</option>
-                            <option value="Meteor"> Meteor Meatballs</option>
-                            <option value="Invisible Ice Cream"> Invisible Ice Cream</option>
-                        </select>
-                    </div>
-                    <button onclick="serverOrder">SERVE!</button>
+    </div>
+
+    <div id="restaurant-screen">
+        <div class="restaurant-building">
+            <div class="ordering-menu">
+                <h2>Menu</h2>
+                <div class="menu-item">
+                   <select id="mealSelect">
+                        <option value="Star Dust">✨ Star Dust Pancakes</option>
+                        <option value="Meteor">☄️ Meteor Meatballs</option>
+                        <option value="Invisible Ice Cream">🍦 Invisible Ice Cream</option>
+                    </select>
                 </div>
-                <div class="service-window">
-                    <div id="reaction-bubble">Reaction goes here...</div>
-                    <img id="window-pet-img" src="" alt="Pet awaiting food">
-                    <div class="counter-shelf"></div>
-                </div>
+                <button onclick="serveOrder()">SERVE!</button>
+            </div>
+
+            <div class="service-window">
+                <div id="reaction-bubble">Reaction goes here...</div>
+                <img id="window-pet-img" src="" alt="Pet awaiting food">
+                <div class="counter-shelf"></div>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
+</div>
 </body>
 </html>
